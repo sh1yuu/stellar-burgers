@@ -5,10 +5,11 @@ import styles from './constructor-page.module.css';
 import { FC } from 'react';
 import { BurgerConstructor, BurgerIngredients } from '../../components';
 import { Preloader } from '../../components/ui';
+import { selectorLoading } from '../../services/ingredients-slice';
 
 export const ConstructorPage: FC = () => {
   /** TODO: взять переменную из стора */
-  const isIngredientsLoading = false;
+  const isIngredientsLoading = useSelector(selectorLoading);
 
   return (
     <>

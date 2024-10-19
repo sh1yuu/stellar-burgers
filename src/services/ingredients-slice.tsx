@@ -12,9 +12,9 @@ const initialState: TIngredientState = {
   loading: false
 };
 
-export const getIngredients = createAsyncThunk<TIngredient[]>(
+export const getIngredients = createAsyncThunk(
   'ingredients/getIngredients',
-  getIngredientsApi
+  async () => getIngredientsApi()
 );
 
 export const ingredientsSlice = createSlice({
@@ -30,7 +30,7 @@ export const ingredientsSlice = createSlice({
       .addCase(getIngredients.pending, (state) => {
         state.loading = true;
       })
-      .addCase(getIngredients.rejected, (state, action) => {
+      .addCase(getIngredients.rejected, (state) => {
         state.loading = false;
       })
       .addCase(getIngredients.fulfilled, (state, action) => {

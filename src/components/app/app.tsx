@@ -15,28 +15,41 @@ import styles from './app.module.css';
 
 import { AppHeader, IngredientDetails, Modal, OrderInfo } from '@components';
 import { title } from 'process';
+import { useEffect } from 'react';
+import { getIngredients } from '../../services/ingredients-slice';
+import { clearOrder } from '../../services/order-slice';
+import { useDispatch } from '../../services/store';
+import { IngredientDetailsContainer } from '../ingredient-details-container/ingredient-details-container';
 
 const App = () => {
   const location = useLocation();
-  const backgroundLocation = location.state?.backgroundLocation;
+  const background = location.state?.background;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleFeedClose = () => {
     navigate('/feed');
+    dispatch(clearOrder());
   };
 
   const handleIngredientsClose = () => {
-    navigate('/ingredients');
+    navigate('/');
+    dispatch(clearOrder());
   };
 
   const handleOrderClose = () => {
     navigate('/profile/orders');
+    dispatch(clearOrder());
   };
+
+  useEffect(() => {
+    dispatch(getIngredients());
+  }, []);
 
   return (
     <div className={styles.app}>
       <AppHeader />
-      <Routes location={backgroundLocation || location}>
+      <Routes location={background || location}>
         <Route path='/' element={<ConstructorPage />} />
         <Route path='/feed' element={<Feed />} />
         <Route path='/login' element={<Login />} />
@@ -47,11 +60,18 @@ const App = () => {
         <Route path='/profile/orders' element={<ProfileOrders />} />
         <Route path='*' element={<NotFound404 />} />
         <Route path='/feed/:number' element={<OrderInfo />} />
-        <Route path='/ingredients/:id' element={<IngredientDetails />} />
+        <Route
+          path='/ingredients/:id'
+          element={
+            <IngredientDetailsContainer title='Детали ингредиента'>
+              <IngredientDetails />
+            </IngredientDetailsContainer>
+          }
+        />
         <Route path='/profile/orders/:number' element={<OrderInfo />} />
       </Routes>
 
-      {backgroundLocation && (
+      {background && (
         <Routes>
           <Route
             path='/feed/:number'
@@ -64,7 +84,10 @@ const App = () => {
           <Route
             path='/ingredients/:id'
             element={
-              <Modal title={title} onClose={handleIngredientsClose}>
+              <Modal
+                title='Детали ингредиента'
+                onClose={handleIngredientsClose}
+              >
                 <IngredientDetails />
               </Modal>
             }

@@ -2,8 +2,8 @@ import { TIngredient } from '@utils-types';
 import { FC, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { selectorIngredients } from '../../services/ingredients-slice';
-import { getOrder } from '../../services/order-slice';
-import { RootState, useDispatch, useSelector } from '../../services/store';
+import { getOrderByNumber, selectorOrder } from '../../services/order-slice';
+import { useDispatch, useSelector } from '../../services/store';
 import { OrderInfoUI } from '../ui/order-info';
 import { Preloader } from '../ui/preloader';
 
@@ -13,10 +13,12 @@ export const OrderInfo: FC = () => {
   const orderId = Number(useParams().number);
 
   useEffect(() => {
-    dispatch(getOrder(orderId));
-  });
+    if (orderId) {
+      dispatch(getOrderByNumber(orderId));
+    }
+  }, []);
 
-  const orderData = useSelector((state: RootState) => state.order.data);
+  const orderData = useSelector(selectorOrder);
 
   const ingredients: TIngredient[] = useSelector(selectorIngredients).filter(
     (i) => orderData?.ingredients.includes(i._id)

@@ -9,7 +9,13 @@ import {
   Register,
   ResetPassword
 } from '@pages';
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import {
+  Route,
+  Routes,
+  useLocation,
+  useMatch,
+  useNavigate
+} from 'react-router-dom';
 import '../../index.css';
 import styles from './app.module.css';
 
@@ -19,7 +25,10 @@ import { useEffect } from 'react';
 import { getIngredients } from '../../services/ingredients-slice';
 import { clearOrder } from '../../services/order-slice';
 import { useDispatch } from '../../services/store';
+import { checkUserAuth } from '../../services/user-slice';
+import { FeedDetailsContainer } from '../feed-details-container/ingredient-details-container';
 import { IngredientDetailsContainer } from '../ingredient-details-container/ingredient-details-container';
+import { ProtectedRoute } from '../protected-route/protected-route';
 
 const App = () => {
   const location = useLocation();
@@ -42,8 +51,11 @@ const App = () => {
     dispatch(clearOrder());
   };
 
+  const orderId = location.pathname.split('/').at(-1);
+
   useEffect(() => {
     dispatch(getIngredients());
+    dispatch(checkUserAuth());
   }, []);
 
   return (
@@ -52,14 +64,63 @@ const App = () => {
       <Routes location={background || location}>
         <Route path='/' element={<ConstructorPage />} />
         <Route path='/feed' element={<Feed />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/forgot-password' element={<ForgotPassword />} />
-        <Route path='/reset-password' element={<ResetPassword />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/profile/orders' element={<ProfileOrders />} />
+        <Route
+          path='/login'
+          element={
+            <ProtectedRoute onlyUnAuth>
+              <Login />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/register'
+          element={
+            <ProtectedRoute onlyUnAuth>
+              <Register />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/forgot-password'
+          element={
+            <ProtectedRoute onlyUnAuth>
+              <ForgotPassword />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/reset-password'
+          element={
+            <ProtectedRoute onlyUnAuth>
+              <ResetPassword />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/profile'
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/profile/orders'
+          element={
+            <ProtectedRoute>
+              <ProfileOrders />
+            </ProtectedRoute>
+          }
+        />
         <Route path='*' element={<NotFound404 />} />
-        <Route path='/feed/:number' element={<OrderInfo />} />
+        <Route
+          path='/feed/:number'
+          element={
+            <FeedDetailsContainer title={`#0${orderId}`}>
+              <OrderInfo />
+            </FeedDetailsContainer>
+          }
+        />
         <Route
           path='/ingredients/:id'
           element={
@@ -76,7 +137,7 @@ const App = () => {
           <Route
             path='/feed/:number'
             element={
-              <Modal title={title} onClose={handleFeedClose}>
+              <Modal title={`#0${orderId}`} onClose={handleFeedClose}>
                 <OrderInfo />
               </Modal>
             }
@@ -95,9 +156,11 @@ const App = () => {
           <Route
             path='/profile/orders/:number'
             element={
-              <Modal title={title} onClose={handleOrderClose}>
-                <OrderInfo />
-              </Modal>
+              <ProtectedRoute>
+                <Modal title={`#0${orderId}`} onClose={handleOrderClose}>
+                  <OrderInfo />
+                </Modal>
+              </ProtectedRoute>
             }
           />
         </Routes>

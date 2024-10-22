@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './order-details.module.css';
 import doneImg from '../../../images/done.svg';
+import styles from './order-details.module.css';
 import { OrderDetailsUIProps } from './type';
 
 export const OrderDetailsUI: React.FC<OrderDetailsUIProps> = ({
@@ -8,7 +8,7 @@ export const OrderDetailsUI: React.FC<OrderDetailsUIProps> = ({
 }) => (
   <>
     <h2 className={`${styles.title} text text_type_digits-large mt-2 mb-4`}>
-      {orderNumber}
+      {`0${orderNumber}`}
     </h2>
     <p className='text text_type_main-medium'>идентификатор заказа</p>
     <img

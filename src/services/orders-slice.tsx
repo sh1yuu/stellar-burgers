@@ -20,7 +20,7 @@ export const ordersSlice = createSlice({
   name: 'orders',
   initialState,
   reducers: {
-    orderRequset: (state, action) => {
+    orderRequest: (state, action) => {
       state.loading = action.payload;
     }
   },
@@ -36,4 +36,4 @@ export const ordersSlice = createSlice({
 });
 
 export const { selectorOrders, selectorOrdersRequest } = ordersSlice.selectors;
-export const { orderRequset } = ordersSlice.actions;
+export const { orderRequest } = ordersSlice.actions;

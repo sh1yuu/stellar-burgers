@@ -1,4 +1,4 @@
-import { getOrderByNumberApi } from '@api';
+import { getOrderByNumberApi, orderBurgerApi } from '@api';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TOrder } from '@utils-types';
 
@@ -12,11 +12,19 @@ const initialState: TOrderState = {
   loading: false
 };
 
-export const getOrder = createAsyncThunk<TOrder, number>(
+export const getOrderByNumber = createAsyncThunk<TOrder, number>(
   'order/getOrder',
   async (number: number) => {
     const response = await getOrderByNumberApi(number);
     return response.orders[0];
+  }
+);
+
+export const orderBurger = createAsyncThunk(
+  'order/orderBurger',
+  async (id: string[]) => {
+    const response = await orderBurgerApi(id);
+    return response;
   }
 );
 
@@ -34,14 +42,24 @@ export const orderSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getOrder.pending, (state) => {
+      .addCase(getOrderByNumber.pending, (state) => {
         state.loading = true;
       })
-      .addCase(getOrder.rejected, (state) => {
+      .addCase(getOrderByNumber.rejected, (state) => {
         state.loading = false;
       })
-      .addCase(getOrder.fulfilled, (state, action) => {
+      .addCase(getOrderByNumber.fulfilled, (state, action) => {
         state.data = action.payload;
+        state.loading = false;
+      })
+      .addCase(orderBurger.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(orderBurger.rejected, (state) => {
+        state.loading = false;
+      })
+      .addCase(orderBurger.fulfilled, (state, action) => {
+        state.data = action.payload.order;
         state.loading = false;
       });
   }

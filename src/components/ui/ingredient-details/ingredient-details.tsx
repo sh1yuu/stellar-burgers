@@ -1,4 +1,5 @@
 import React, { FC, memo } from 'react';
+import { Preloader } from '../preloader';
 import styles from './ingredient-details.module.css';
 import { IngredientDetailsUIProps } from './type';
 

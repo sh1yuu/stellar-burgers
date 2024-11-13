@@ -1,0 +1,48 @@
+{
+  "success": true,
+  "name": "Флюоресцентный люминесцентный бургер",
+  "order": {
+    "_id": "67170bf2d829be001c77797a",
+    "number": 57156,
+    "owner": {
+      "name": "Михаил",
+      "email": "etternall.forgotten@mail.ru",
+      "createdAt": "2024-10-22T02:20:34.743Z",
+      "undatedAt": "024-10-22T02:20:35.610Z"
+    },
+    "ingredients": [
+      {
+        "_id": "643d69a5c3f7b9001cfa093e",
+        "name": "Филе Люминесцентного тетраодонтимформа",
+        "type": "main",
+        "proteins": "44",
+        "fat": "26",
+        "carbohydrates": "85",
+        "calories": "643",
+        "price": "988",
+        "image": "https://code.s3.yandex.net/react/code/meat-03.png",
+        "image_large": "https://code.s3.yandex.net/react/code/meat-03-large.png",
+        "image_mobile": "https://code.s3.yandex.net/react/code/meat-03-mobile.png",
+        "__v": 0
+      },
+      {
+        "_id": "643d69a5c3f7b9001cfa093d",
+        "name": "Флюоресцентная булка R2-D3",
+        "type": "bun",
+        "proteins": "44",
+        "fat": "26",
+        "carbohydrates": "85",
+        "calories": "643",
+        "price": "988",
+        "image": "https://code.s3.yandex.net/react/code/bun-01.png",
+        "image_large": "hhttps://code.s3.yandex.net/react/code/bun-01-large.png",
+        "image_mobile": "https://code.s3.yandex.net/react/code/bun-01-mobile.png",
+        "__v": 0
+      }
+    ],
+    "status": "done",
+    "createdAt": "2024-10-22T02:20:34.743Z",
+    "updatedAt": "2024-10-22T02:20:35.610Z",
+    "price": 1976
+  }
+}

@@ -24,7 +24,7 @@ describe('feed-slice', () => {
     totalToday: '65'
   };
 
-  it('получение списка заказов', () => {
+  it('получение списка заказов (fulfilled)', () => {
     const state = feedSlice.reducer(initialState, {
       type: getFeeds.fulfilled.type,
       payload: orderStateData

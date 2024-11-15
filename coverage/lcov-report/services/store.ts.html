@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/feed-slice.tsx</title>
+    <title>Code coverage report for services/store.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> feed-slice.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> store.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.45% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>42/44</span>
+                <span class='fraction'>36/36</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.45% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>42/44</span>
+                <span class='fraction'>36/36</span>
             </div>
         
             
@@ -99,15 +99,7 @@
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a>
-<a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -124,8 +116,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -141,60 +131,46 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { getFeedsApi } from '@api';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { TOrder } from '@utils-types';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { combineReducers, configureStore } from '@reduxjs/toolkit';
 &nbsp;
-type TFeedState = {
-  orders: TOrder[];
-  total: number;
-  totalToday: number;
-};
+import {
+  TypedUseSelectorHook,
+  useDispatch as dispatchHook,
+  useSelector as selectorHook
+} from 'react-redux';
+import { burgerConstructorSlice } from './burgerConstructor-slice';
+import { feedSlice } from './feed-slice';
+import { ingredientsSlice } from './ingredients-slice';
+import { orderSlice } from './order-slice';
+import { ordersSlice } from './orders-slice';
+import { userSlice } from './user-slice';
 &nbsp;
-export const initialState: TFeedState = {
-  orders: [],
-  total: 0,
-  totalToday: 0
-};
+export const rootReducer = combineReducers({
+  [ingredientsSlice.name]: ingredientsSlice.reducer,
+  [burgerConstructorSlice.name]: burgerConstructorSlice.reducer,
+  [feedSlice.name]: feedSlice.reducer,
+  [orderSlice.name]: orderSlice.reducer,
+  [ordersSlice.name]: ordersSlice.reducer,
+  [userSlice.name]: userSlice.reducer
+}); // Заменить на импорт настоящего редьюсера
 &nbsp;
-export const getFeeds = createAsyncThunk('feed/getFeeds', async () =&gt; {
-<span class="cstat-no" title="statement not covered" >  const response = await getFeedsApi();</span>
-<span class="cstat-no" title="statement not covered" >  return response;</span>
+export const store = configureStore({
+  reducer: rootReducer,
+  devTools: process.env.NODE_ENV !== 'production'
 });
 &nbsp;
-export const feedSlice = createSlice({
-  name: 'feed',
-  initialState,
-  reducers: {},
-  selectors: {
-    selectorFeedOrders: <span class="fstat-no" title="function not covered" >(state) =&gt; state.</span>orders,
-    selectorFeed: <span class="fstat-no" title="function not covered" >(state) =&gt; state,</span>
-    selectorFeedTotal: <span class="fstat-no" title="function not covered" >(state) =&gt; ({</span>
-      total: state.total,
-      totalToday: state.totalToday
-    })
-  },
-  extraReducers: (builder) =&gt; {
-    builder.addCase(getFeeds.fulfilled, (state, action) =&gt; {
-      state.orders = action.payload.orders;
-      state.total = action.payload.total;
-      state.totalToday = action.payload.totalToday;
-    });
-  }
-});
+export type RootState = ReturnType&lt;typeof rootReducer&gt;;
 &nbsp;
-export const { selectorFeedOrders, selectorFeed, selectorFeedTotal } =
-  feedSlice.selectors;
+export type AppDispatch = typeof store.dispatch;
+&nbsp;
+export const useDispatch: () =&gt; AppDispatch = <span class="fstat-no" title="function not covered" >() =&gt; dispatchHook(</span>);
+export const useSelector: TypedUseSelectorHook&lt;RootState&gt; = selectorHook;
+&nbsp;
+export default store;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

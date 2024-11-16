@@ -7,7 +7,7 @@ type TOrderState = {
   loading: boolean;
 };
 
-const initialState: TOrderState = {
+export const initialState: TOrderState = {
   data: null,
   loading: false
 };

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1731701343262" clover="3.2.0">
-  <project timestamp="1731701343262" name="All files">
-    <metrics statements="790" coveredstatements="501" conditionals="15" coveredconditionals="14" methods="52" coveredmethods="10" elements="857" coveredelements="525" complexity="0" loc="790" ncloc="790" packages="2" files="9" classes="9"/>
+<coverage generated="1731704638287" clover="3.2.0">
+  <project timestamp="1731704638287" name="All files">
+    <metrics statements="790" coveredstatements="505" conditionals="18" coveredconditionals="17" methods="52" coveredmethods="10" elements="860" coveredelements="532" complexity="0" loc="790" ncloc="790" packages="2" files="9" classes="9"/>
     <package name="services">
-      <metrics statements="508" coveredstatements="414" conditionals="15" coveredconditionals="14" methods="34" coveredmethods="10"/>
+      <metrics statements="508" coveredstatements="418" conditionals="18" coveredconditionals="17" methods="34" coveredmethods="10"/>
       <file name="burgerConstructor-slice.tsx" path="C:\Users\shiyuu\dev\stellar-burgers\src\services\burgerConstructor-slice.tsx">
         <metrics statements="96" coveredstatements="86" conditionals="6" coveredconditionals="5" methods="9" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
@@ -198,7 +198,7 @@
         <line num="44" count="1" type="stmt"/>
       </file>
       <file name="order-slice.tsx" path="C:\Users\shiyuu\dev\stellar-burgers\src\services\order-slice.tsx">
-        <metrics statements="69" coveredstatements="53" conditionals="1" coveredconditionals="1" methods="4" coveredmethods="1"/>
+        <metrics statements="69" coveredstatements="57" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -242,28 +242,28 @@
         <line num="41" count="1" type="stmt"/>
         <line num="42" count="1" type="stmt"/>
         <line num="43" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="44" count="1" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
-        <line num="51" count="1" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
-        <line num="55" count="1" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+        <line num="45" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="46" count="2" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="48" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="51" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
         <line num="56" count="0" type="stmt"/>
-        <line num="57" count="1" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="58" count="2" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
-        <line num="60" count="1" type="stmt"/>
-        <line num="61" count="1" type="stmt"/>
+        <line num="60" count="2" type="stmt"/>
+        <line num="61" count="2" type="stmt"/>
         <line num="62" count="0" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
-        <line num="64" count="1" type="stmt"/>
-        <line num="65" count="1" type="stmt"/>
+        <line num="64" count="2" type="stmt"/>
+        <line num="65" count="2" type="stmt"/>
         <line num="66" count="1" type="stmt"/>
         <line num="67" count="1" type="stmt"/>
         <line num="68" count="1" type="stmt"/>

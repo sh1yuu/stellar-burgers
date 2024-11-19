@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import styles from './burger-ingredient.module.css';
 
 import {
+  AddButton,
   Counter,
-  CurrencyIcon,
-  AddButton
+  CurrencyIcon
 } from '@zlden/react-developer-burger-ui-components';
 
 import { TBurgerIngredientUIProps } from './type';
@@ -15,7 +15,7 @@ export const BurgerIngredientUI: FC<TBurgerIngredientUIProps> = memo(
     const { image, price, name, _id } = ingredient;
 
     return (
-      <li className={styles.container}>
+      <li className={styles.container} data-cy={ingredient._id}>
         <Link
           className={styles.article}
           to={`/ingredients/${_id}`}

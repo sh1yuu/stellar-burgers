@@ -1,6 +1,6 @@
 #  Проектная работа "Stellar-burgers"
 
-Веб-сервис для заказа бургеров, с личным кабинетом.
+Веб-сервис для заказа бургеров, с личным кабинетом и лентой заказов.
 
 [ССылка на gh-pages](<https://sh1yuu.github.io/stellar-burgers/>) | [ССылка на макет в Figma](<https://www.figma.com/file/vIywAvqfkOIRWGOkfOnReY/React-Fullstack_-Проектные-задачи-(3-месяца)_external_link?type=design&node-id=0-1&mode=design>)
 

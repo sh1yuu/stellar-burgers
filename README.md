@@ -1,33 +1,32 @@
 #  Проектная работа "Stellar-burgers"
 
-[Макет](<https://www.figma.com/file/vIywAvqfkOIRWGOkfOnReY/React-Fullstack_-Проектные-задачи-(3-месяца)_external_link?type=design&node-id=0-1&mode=design>)
+Веб-сервис для заказа бургеров, с личным кабинетом.
 
-[Чеклист](https://www.notion.so/praktikum/0527c10b723d4873aa75686bad54b32e?pvs=4)
+[ССылка на gh-pages](<https://sh1yuu.github.io/stellar-burgers/>) | [ССылка на макет в Figma](<https://www.figma.com/file/vIywAvqfkOIRWGOkfOnReY/React-Fullstack_-Проектные-задачи-(3-месяца)_external_link?type=design&node-id=0-1&mode=design>)
 
-Стек: React, TS, HTML, CSS, Webpack
+![image](https://github.com/user-attachments/assets/5ee7416b-af6d-48f1-ac88-240918449981)
 
-## Установка и запуск
-Для установки и запуска проекта необходимо выполнить команды
+##  Структура проекта
+- stellar-burgers (frontend) - этот репозиторий ❤️
 
+## Технологии
+- React.ts, React Router, Redux Toolkit, Хуки (useEffect, useState и тд)
+
+## Инструкция по установке и запуску
+Чтобы запустить проект, нужно сделать несколько шагов:
+1. Создайте папку и перейдите в неё:
+```
+cd <Имя-папки>
+```
+2. Склонируйте этот репозиторий:
+```
+git clone https://github.com/sh1yuu/stellar-burgers.git
+```
+3. Установите все зависимости:
 ```
 npm install
+```
+4. Теперь можете запустить проект:
+```
 npm run start
-```
-
-или
-
-```
-yarn
-yarn start
-```
-## Сборка
-
-```
-npm run build
-```
-
-или
-
-```
-yarn build
 ```

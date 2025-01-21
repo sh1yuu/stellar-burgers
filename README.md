@@ -10,7 +10,7 @@
 - stellar-burgers (frontend) - этот репозиторий ❤️
 
 ## Технологии
-- React, Typescript, React Router, Redux Toolkit, Хуки (useEffect, useState и тд)
+- React, Typescript, React Router, Redux, Redux Toolkit, Хуки (useEffect, useState и тд), HTML, CSS
 
 ## Инструкция по установке и запуску
 Чтобы запустить проект, нужно сделать несколько шагов:
